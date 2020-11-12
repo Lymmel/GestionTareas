@@ -1,0 +1,11 @@
+{
+  "name": "gestionEmp",
+  "integrations": {},
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://apittask.tandemsm.com"
+    }
+  ]
+}

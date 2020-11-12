@@ -1,0 +1,12 @@
+{
+    "/api/*":{
+        "target": "https://apittask.tandemsoftware.es",
+        "secure": true,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "pathRewrite":{"^/api": "https://apittask.tandemsoftware.es/api"}
+        
+    }
+}
+
+
