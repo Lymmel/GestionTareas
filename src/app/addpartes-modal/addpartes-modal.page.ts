@@ -23,22 +23,18 @@ export class AddpartesModalPage implements OnInit {
     this.partForm = this.formBuilder.group({
       descripcion: ['', Validators.required],
       observaciones: [''],
-      observacionescliente: [''],
-      numhoras: [''],
-      numhorasfactura: [''],
-      estadoparte: ['']
+      idtrabajo: [''],
+      idlinea: ['']
     });
   }
 
-  addClient() {
+  addParte() {
     let data: Parte;
     data = {
       descripcion: this.partForm.get('descripcion').value,
       observaciones: this.partForm.get('observaciones').value,
-      observacionescliente: this.partForm.get('observacionescliente').value,
-      numhoras: this.partForm.get('numhoras').value,
-      numhorasfactura: this.partForm.get('numhorasfactura').value,
-      estadoparte: this.partForm.get('estadoparte').value,
+      idtrabajo: this.partForm.get('idtrabajo').value,
+      idlinea: this.partForm.get('idlinea').value,
 
     }
     this.myLoading.presentLoading();
@@ -47,12 +43,10 @@ export class AddpartesModalPage implements OnInit {
       this.partSvc.createPart(data).subscribe((ok) => {
         this.partForm.reset();
         this.myToast.presentToast("Parte agregado", 'success');
+        this.myLoading.hideLoading();
       })
     } catch (error) {
       this.myToast.presentToast("Error", 'danger', 4000);
-      
-    } finally {
-      this.myLoading.hideLoading();
     }
   }
 

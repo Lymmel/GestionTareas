@@ -48,8 +48,9 @@
 
       </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger">
+      <ion-item-options side="end" (ionSwipe)="borraParte(parte.idparte)">
+        <ion-item-option color="danger" expandable (click)="borraParte(parte.idparte)">
+          <ion-label>{{parte.idparte}}</ion-label>
           <ion-icon name="remove-circle" style="zoom:4.0;"></ion-icon>
         </ion-item-option>
       </ion-item-options>

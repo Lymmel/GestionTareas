@@ -18,9 +18,8 @@ export class AlertComponent implements OnInit {
   async presentAlert() {
     let ok: boolean = false;
     const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: '¿Estás seguro de borrar la nota?',
+      header: 'Mensaje de alerta',
+      message: '¿Estás seguro de borrar estos datos?',
       buttons: [
         {
           text: 'No.',

@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="partForm" (ngSubmit)="addClient()">
+  <form [formGroup]="partForm" (ngSubmit)="addParte()">
     <ion-item>
       <ion-label>descripcion: </ion-label>
       <ion-input type="text" formControlName="descripcion"></ion-input>
@@ -22,20 +22,12 @@
       <ion-input formControlName="observaciones"></ion-input>
     </ion-item>  
     <ion-item>
-      <ion-label>observacionescliente: </ion-label>
-      <ion-input formControlName="observacionescliente"></ion-input>
+      <ion-label>idtrabajo: </ion-label>
+      <ion-input formControlName="idtrabajo"></ion-input>
     </ion-item>  
     <ion-item>
-      <ion-label>numhoras: </ion-label>
-      <ion-input formControlName="numhoras"></ion-input>
-    </ion-item>  
-    <ion-item>
-      <ion-label>numhorasfactura: </ion-label>
-      <ion-input formControlName="numhorasfactura"></ion-input>
-    </ion-item>  
-    <ion-item>
-      <ion-label>estadoparte: </ion-label>
-      <ion-input formControlName="estadoparte"></ion-input>
+      <ion-label>idlinea: </ion-label>
+      <ion-input formControlName="idlinea"></ion-input>
     </ion-item>  
     <ion-button shape="round" color="tertiary" fill="solid" type="submit" [disabled]="!this.partForm.valid">Agregar</ion-button>
   </form>

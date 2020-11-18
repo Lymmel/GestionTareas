@@ -18,6 +18,7 @@ import { ToastComponent } from './components/toast/toast.component';
 import { ClientdetailsModalPageModule } from './clientdetails-modal/clientdetails-modal.module';
 
 import { ClientdetailsModalPage } from './clientdetails-modal/clientdetails-modal.page';
+import { AlertComponent } from './components/alert/alert.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ClientdetailsModalPage } from './clientdetails-modal/clientdetails-moda
     SplashScreen,
     LoadingComponent,
     ToastComponent,
+    AlertComponent,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

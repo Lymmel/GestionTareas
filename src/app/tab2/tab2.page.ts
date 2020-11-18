@@ -29,6 +29,7 @@ export class Tab2Page {
 
   goToMenu() {
     this.mCtr.toggle();
+    this.mCtr.enable(true);
   }
 
   

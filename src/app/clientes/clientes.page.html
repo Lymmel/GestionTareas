@@ -4,6 +4,9 @@
 
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
+      <ion-button (click)="refrescar()">
+        <ion-icon name="refresh" slot="icon-only"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button (click)="refrescar()">
@@ -23,14 +26,11 @@
 <ion-content [fullscreen]="true">
 
 
-
-
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
-
 
 
   <ion-list>

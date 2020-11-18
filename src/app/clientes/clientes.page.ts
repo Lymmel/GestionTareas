@@ -118,9 +118,10 @@ export class ClientesPage implements OnInit {
 
   }
 
-  public irNueva(): void {
+  /*  public irNueva(): void {
     this.router.navigateByUrl('addnewclient');
   }
+  */
 
   async presentModal() {
     const modal = await this.modalCtrl.create({
@@ -137,7 +138,6 @@ export class ClientesPage implements OnInit {
   }
 
 
-
   async presentModal2(codigocliente:string, myData:Client) {
     const modal = await this.modalCtrl.create({
       component: ClientdetailsModalPage,
@@ -149,4 +149,7 @@ export class ClientesPage implements OnInit {
     return await modal.present();
   }
 
+
 }
+
+

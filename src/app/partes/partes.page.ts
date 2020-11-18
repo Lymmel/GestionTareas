@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, ModalController } from '@ionic/angular';
 import { AddpartesModalPage } from '../addpartes-modal/addpartes-modal.page';
+import { AlertComponent } from '../components/alert/alert.component';
 import { LoadingComponent } from '../components/loading/loading.component';
+import { ToastComponent } from '../components/toast/toast.component';
 import { Parte } from '../interfaces/partes';
 import { PartedetailsModalPage } from '../partedetails-modal/partedetails-modal.page';
 import { PartesService } from '../services/partes.service';
@@ -17,18 +19,19 @@ export class PartesPage implements OnInit {
   partes: Parte[] = [];
   partbackup: Parte[] = [];
 
-  constructor(private partSvc: PartesService, private menuCtrl:MenuController, private myLoading: LoadingComponent, private modalCtrl:ModalController) {
+  constructor(private partSvc: PartesService, private menuCtrl: MenuController, private myLoading: LoadingComponent, private modalCtrl: ModalController,
+    private myAlert: AlertComponent, private myToast: ToastComponent) {
     this.menuCtrl.enable(false, 'firstMenu');
   }
 
 
 
-  ngOnInit(){
+  ngOnInit() {
     this.partSvc.getAll()
-    .subscribe(partes => {
-      console.log(partes);
-      this.partes = partes;
-    });
+      .subscribe(partes => {
+        console.log(partes);
+        this.partes = partes;
+      });
 
     this.partSvc.getAll()
       .subscribe(partbackup => {
@@ -61,11 +64,11 @@ export class PartesPage implements OnInit {
     console.log("Cargando partes...");
     try {
       this.partSvc.getAll().subscribe((listado) => {
-        if(listado){
+        if (listado) {
           this.partes = listado;
           this.myLoading.hideLoading();
         }
-        
+
       },
         error => {
 
@@ -81,13 +84,13 @@ export class PartesPage implements OnInit {
     this.partes = this.partbackup;
     const searchTerm = evt.srcElement.value;
 
-    if (searchTerm && searchTerm.trim() != ''){
+    if (searchTerm && searchTerm.trim() != '') {
       this.partes = this.partes.filter(currentClient => {
         if (currentClient.idparte && searchTerm) {
           return (currentClient.idparte.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
         }
       });
-    }else{
+    } else {
       this.ngOnInit();
     }
   }
@@ -107,15 +110,38 @@ export class PartesPage implements OnInit {
   }
 
 
-  async presentModal2(idparte:string, myData:Parte) {
+  async presentModal2(idparte: string, myData: Parte) {
     const modal = await this.modalCtrl.create({
       component: PartedetailsModalPage,
-      componentProps:{
+      componentProps: {
         'idparte': idparte,
         'Parte': myData
       }
     });
     return await modal.present();
   }
+
+
+  borraParte(idparte: string) {
+    this.myAlert.presentAlert().then((success: boolean) => {
+      try {
+        if (success) {
+          console.log(idparte);
+          this.partSvc.deletePart(idparte).subscribe((salida) => {
+            this.myToast.presentToast("Parte borrado correctamente", 'success');
+            this.refrescar();
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }).catch((error) => {
+      console.log(error);
+      this.myToast.presentToast("Error", 'danger', 4000);
+    })
+  }
+
+  
+
 
 }

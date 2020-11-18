@@ -17,12 +17,28 @@ export class PartesService {
   getAll(): Observable<any> {
     //return this.http.get<any>('https://apittask.tandemsoftware.es/api/partes/7F9231ED2F71CF139B9442935);
      return this.http.get<any>('/api/partes/7F9231ED2F71CF139B9442935');
+  }
 
+  getByID(id: string): Observable<any> {
+     return this.http.get<any>('/api/partes/7F9231ED2F71CF139B9442935'+'/'+id);
   }
 
   //crear parte
-  createPart(task: Parte): Observable<any> {
-   return this.http.post<any>('api/partes/7F9231ED2F71CF139B9442935', task);
+  createPart(parte: Parte): Observable<any> {
+   return this.http.post<any>('/api/creaparte', parte);
   }
+
+  //deleteparte
+  deletePart(idparte: String):Observable<any>{
+    console.log(idparte);
+    return this.http.post<any>('/api/deletepartepedido',idparte);
+  }
+
+  //deleteparte2
+  deletePart2(idparte: String):Observable<any>{
+    console.log(idparte);
+    return this.http.delete<any>('/api/deletepartepedido2');
+  }
+
   
 }
