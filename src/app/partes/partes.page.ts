@@ -122,12 +122,12 @@ export class PartesPage implements OnInit {
   }
 
 
-  borraParte(idparte: string) {
+  borraParte(parte: Parte) {
     this.myAlert.presentAlert().then((success: boolean) => {
       try {
         if (success) {
-          console.log(idparte);
-          this.partSvc.deletePart(idparte).subscribe((salida) => {
+          console.log(parte);
+          this.partSvc.deletePart(parte).subscribe((salida) => {
             this.myToast.presentToast("Parte borrado correctamente", 'success');
             this.refrescar();
           });
@@ -140,8 +140,5 @@ export class PartesPage implements OnInit {
       this.myToast.presentToast("Error", 'danger', 4000);
     })
   }
-
-  
-
 
 }
