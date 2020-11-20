@@ -19,7 +19,7 @@ export class ClientService {
 
   getAll(): Observable<any> {
     //return this.http.get<any>('https://apittask.tandemsoftware.es/api/clientes/7F9231ED2F71CF139B9442935);
-     return this.http.get<any>('/api/clientes/7F9231ED2F71CF139B9442935');
+    return this.http.get<any>('/api/clientes/7F9231ED2F71CF139B9442935');
 
   }
 
@@ -30,16 +30,25 @@ export class ClientService {
   }
 
   //crear cliente
-  createClient(task: Client): Observable<any> {
+  createClient(client: Client): Observable<any> {
     /*
     const path = `${this.api}/cliente`;
     return this.http.post<Client>(path, task);
     */
-   return this.http.post<any>('api/clientes/7F9231ED2F71CF139B9442935', task);
+    return this.http.post<any>('api/createclient', client);
   }
 
+  //deleteclient
+  deletePart(cliente: Client): Observable<any> {
+    console.log(cliente);
+    return this.http.post<any>('/api/deletecliente', cliente);
+  }
+
+
+
+
   //actualizar datos cliente
-  updateTask(client: Client) {                
+  updateTask(client: Client) {
     const path = `${this.api}/cliente/${client.codigocliente}`;
     return this.http.put<Client>(path, client);
   }
@@ -49,7 +58,7 @@ export class ClientService {
     const path = `${this.api}/cliente/${id}`;
     return this.http.delete(path);
   }
-  
+
 
 }
 

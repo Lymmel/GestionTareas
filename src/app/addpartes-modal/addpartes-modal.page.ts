@@ -24,7 +24,7 @@ export class AddpartesModalPage implements OnInit {
       descripcion: ['', Validators.required],
       observaciones: [''],
       idtrabajo: [''],
-      idlinea: ['']
+      idtarea: ['']
     });
   }
 
@@ -34,7 +34,7 @@ export class AddpartesModalPage implements OnInit {
       descripcion: this.partForm.get('descripcion').value,
       observaciones: this.partForm.get('observaciones').value,
       idtrabajo: this.partForm.get('idtrabajo').value,
-      idlinea: this.partForm.get('idlinea').value,
+      idtarea: this.partForm.get('idtarea').value,
 
     }
     this.myLoading.presentLoading();

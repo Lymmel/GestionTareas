@@ -15,6 +15,10 @@
 <ion-content padding>
   <form [formGroup]="clientForm" (ngSubmit)="addClient()">
     <ion-item>
+      <ion-label>codigocliente: </ion-label>
+      <ion-input type="text" formControlName="codigocliente"></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label>razonsocial: </ion-label>
       <ion-input type="text" formControlName="razonsocial"></ion-input>
     </ion-item>  
@@ -22,6 +26,14 @@
       <ion-label>email: </ion-label>
       <ion-input formControlName="email"></ion-input>
     </ion-item>  
+    <ion-item>
+      <ion-label>municipio: </ion-label>
+      <ion-input formControlName="municipio"></ion-input>
+    </ion-item> 
+    <ion-item>
+      <ion-label>provincia: </ion-label>
+      <ion-input formControlName="provincia"></ion-input>
+    </ion-item> 
     <ion-item>
       <ion-label>telefono: </ion-label>
       <ion-input formControlName="telefono"></ion-input>
@@ -31,13 +43,9 @@
       <ion-input formControlName="direccion"></ion-input>
     </ion-item>  
     <ion-item>
-      <ion-label>municipio: </ion-label>
-      <ion-input formControlName="municipio"></ion-input>
-    </ion-item>  
-    <ion-item>
-      <ion-label>provincia: </ion-label>
-      <ion-input formControlName="provincia"></ion-input>
-    </ion-item>  
+      <ion-label>activo: </ion-label>
+      <ion-input type="text" formControlName="activo"></ion-input>
+    </ion-item>
     <ion-button shape="round" color="tertiary" fill="solid" type="submit" [disabled]="!this.clientForm.valid">Agregar</ion-button>
   </form>
 </ion-content>

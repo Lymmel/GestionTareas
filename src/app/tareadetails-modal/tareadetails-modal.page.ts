@@ -29,7 +29,7 @@ export class TareadetailsModalPage implements OnInit {
     this.tareaForm2 = this.formBuilder.group({
       descripcion: [this.myData.descripcion, Validators.required],
       fechafin: [this.myData.fechafin],
-      fechaverifica: [this.myData.fechaverifica],
+      fecha: [this.myData.fecha],
       documento: [this.myData.documento]
     });
 

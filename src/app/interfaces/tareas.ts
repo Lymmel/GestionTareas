@@ -1,7 +1,8 @@
 export interface Tarea {
-    idtareas?: string;
+    idtarea?: string;
+    idproyecto?: string;
     descripcion: string;
     fechafin: string;
-    fechaverifica: string;
+    fecha: string;
     documento: string;
 }

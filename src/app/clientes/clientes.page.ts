@@ -6,6 +6,8 @@ import { LoadingComponent } from './../components/loading/loading.component';
 import { Router } from '@angular/router';
 import { AddclientModalPage } from '../addclient-modal/addclient-modal.page';
 import { ClientdetailsModalPage } from '../clientdetails-modal/clientdetails-modal.page';
+import { ToastComponent } from '../components/toast/toast.component';
+import { AlertComponent } from '../components/alert/alert.component';
 
 
 
@@ -26,7 +28,8 @@ export class ClientesPage implements OnInit {
  
 
   constructor(private cliSvc: ClientService, private menuCtrl: MenuController, private myLoading: LoadingComponent,
-    private router: Router, private modalCtrl: ModalController) {
+    private router: Router, private modalCtrl: ModalController,
+    private myAlert: AlertComponent, private myToast: ToastComponent) {
     this.menuCtrl.enable(false, 'firstMenu');
   }
 
@@ -147,6 +150,25 @@ export class ClientesPage implements OnInit {
       }
     });
     return await modal.present();
+  }
+
+  borraCliente(parte: Client) {
+    this.myAlert.presentAlert().then((success: boolean) => {
+      try {
+        if (success) {
+          console.log(parte);
+          this.cliSvc.deletePart(parte).subscribe((salida) => {
+            this.myToast.presentToast("Parte borrado correctamente", 'success');
+            this.refrescar();
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }).catch((error) => {
+      console.log(error);
+      this.myToast.presentToast("Error", 'danger', 4000);
+    })
   }
 
 

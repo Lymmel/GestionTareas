@@ -12,7 +12,33 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="tarForm" (ngSubmit)="addClient()">
+  <form [formGroup]="tarForm" (ngSubmit)="addTarea()">
+    <ion-item>
+      <ion-label>Ver proyectos: </ion-label>
+      <ion-input type="text" formControlName="idproyecto">
+        <ion-select multiple="true" okText='ok'  formControlName="idproyecto">
+          <ion-select-option *ngFor="let proyecto of proyectos" value="{{ proyecto['idproyecto'] }}">
+            {{proyecto.idproyecto}} -
+            {{proyecto.razonsocial}}
+          </ion-select-option>
+        </ion-select>
+      </ion-input>
+    </ion-item> 
+
+
+    <!-- 
+      [value]="proyecto.idproyecto"
+      value="{{ proyecto['idproyecto'] }}"
+    -->
+
+
+    <!--
+      <ion-item>
+      <ion-label>IDProyecto: </ion-label>
+      <ion-input type="text" formControlName="idproyecto"></ion-input>
+    </ion-item>
+    -->
+    
     <ion-item>
       <ion-label>descripcion: </ion-label>
       <ion-input type="text" formControlName="descripcion"></ion-input>
@@ -22,20 +48,12 @@
       <ion-input formControlName="fechafin"></ion-input>
     </ion-item>  
     <ion-item>
-      <ion-label>fechaverifica: </ion-label>
-      <ion-input formControlName="fechaverifica"></ion-input>
+      <ion-label>fecha: </ion-label>
+      <ion-input formControlName="fecha"></ion-input>
     </ion-item>  
     <ion-item>
       <ion-label>documento: </ion-label>
       <ion-input formControlName="documento"></ion-input>
-    </ion-item>  
-    <ion-item>
-      <ion-label>municipio: </ion-label>
-      <ion-input formControlName="municipio"></ion-input>
-    </ion-item>  
-    <ion-item>
-      <ion-label>provincia: </ion-label>
-      <ion-input formControlName="provincia"></ion-input>
     </ion-item>  
     <ion-button shape="round" color="tertiary" fill="solid" type="submit" [disabled]="!this.tarForm.valid">Agregar</ion-button>
   </form>

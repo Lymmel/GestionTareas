@@ -22,24 +22,28 @@ export class AddclientModalPage implements OnInit {
 
   ngOnInit() {
     this.clientForm = this.formBuilder.group({
-      razonsocial: ['', Validators.required],
+      codigocliente: ['', Validators.required],
+      razonsocial: [''],
       email: [''],
       telefono: [''],
       direccion: [''],
       municipio: [''],
-      provincia: ['']
+      provincia: [''],
+      activo: ['']
     });
   }
 
   addClient() {
     let data: Client;
     data = {
+      codigocliente: this.clientForm.get('codigocliente').value,
       razonsocial: this.clientForm.get('razonsocial').value,
       email: this.clientForm.get('email').value,
       telefono: this.clientForm.get('telefono').value,
       direccion: this.clientForm.get('direccion').value,
       municipio: this.clientForm.get('municipio').value,
       provincia: this.clientForm.get('provincia').value,
+      activo: this.clientForm.get('activo').value,
     }
     this.myLoading.presentLoading();
 
@@ -47,14 +51,14 @@ export class AddclientModalPage implements OnInit {
       this.cliSvc.createClient(data).subscribe((ok) => {
         this.clientForm.reset();
         this.myToast.presentToast("Cliente agregado", 'success');
+        this.myLoading.hideLoading();
       })
     } catch (error) {
       this.myToast.presentToast("Error", 'danger', 4000);
-      
-    } finally {
-      this.myLoading.hideLoading();
     }
+    this.myLoading.hideLoading();
   }
+
 
   close() {
     this.modalCtrl.dismiss();

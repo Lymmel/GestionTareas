@@ -1,5 +1,5 @@
 export interface Proyecto {
-    codigoproyecto?: string,
+    idproyecto?: string,
     descripcion: string,
     fechacreacion: string,
     fechainicio: string,

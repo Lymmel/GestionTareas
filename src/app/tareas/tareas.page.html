@@ -34,7 +34,7 @@
       <ion-item>
 
         <ion-label>
-          <h3>ID: {{ tarea.idtareas }}</h3>
+          <h3>ID: {{ tarea.idtarea }}</h3>
           <p>
             Descripción: {{ tarea.descripcion }}
           </p>
@@ -50,8 +50,8 @@
 
       </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger">
+      <ion-item-options side="end" (ionSwipe)="borraTarea(tarea)">
+        <ion-item-option color="danger" expandable (click)="borraTarea(tarea)">
           <ion-icon name="remove-circle" style="zoom:4.0;"></ion-icon>
         </ion-item-option>
       </ion-item-options>

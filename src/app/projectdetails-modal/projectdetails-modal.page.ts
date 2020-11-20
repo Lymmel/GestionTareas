@@ -11,7 +11,7 @@ import { Proyecto } from '../interfaces/proyectos';
 export class ProjectdetailsModalPage implements OnInit {
 
   //Lo que le pasas al modal
-  @Input() codigoproyecto: string;
+  @Input() idproyecto: string;
   @Input() myData: Proyecto;
   public proyForm2: FormGroup;
 
@@ -19,7 +19,7 @@ export class ProjectdetailsModalPage implements OnInit {
   projects: Proyecto[] = [];
 
   constructor(private modalCtrl: ModalController, navParams: NavParams, private formBuilder: FormBuilder, private nav: NavController) {
-    this.codigoproyecto = navParams.get('codigoproyecto');
+    this.idproyecto = navParams.get('idproyecto');
     this.myData = navParams.get('Proyecto');
   }
 
@@ -34,7 +34,8 @@ export class ProjectdetailsModalPage implements OnInit {
       observaciones: [this.myData.observaciones],
       importe: [this.myData.importe],
       numhoras: [this.myData.numhoras],
-      razonsocial: [this.myData.razonsocial]
+      razonsocial: [this.myData.razonsocial],
+      idproyecto: [this.myData.idproyecto]
     });
 
   }

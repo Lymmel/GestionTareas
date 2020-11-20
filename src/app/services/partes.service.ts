@@ -34,11 +34,6 @@ export class PartesService {
     return this.http.post<any>('/api/deletepartepedido',parte);
   }
 
-  //deleteparte2
-  deletePart2(idparte: String):Observable<any>{
-    console.log(idparte);
-    return this.http.delete<any>('/api/deletepartepedido2');
-  }
 
   
 }

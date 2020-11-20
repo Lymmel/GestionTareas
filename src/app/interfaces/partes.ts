@@ -6,7 +6,7 @@ export interface Parte {
     numhoras?: string;
     numhorasfactura?: string;
     estadoparte?: string;
-    tipotarea?: string;
+    idtarea?: string;
     idtrabajo?: string;
     idlinea?: string;
     fechainicio?: string;

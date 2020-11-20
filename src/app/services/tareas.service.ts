@@ -22,8 +22,14 @@ export class TareasService {
 
 
   //crear tarea
-  createTask(task: Tarea): Observable<any> {
-    return this.http.post<any>('api/tareas/7F9231ED2F71CF139B9442935', task);
+  createTar(task: Tarea): Observable<any> {
+    return this.http.post<any>('api/createtarea', task);
+  }
+
+  //deletetarea
+  deleteTar(tarea: Tarea): Observable<any> {
+    console.log(tarea);
+    return this.http.post<any>('/api/deletetarea', tarea);
   }
 
 }

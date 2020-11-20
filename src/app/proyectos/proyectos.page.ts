@@ -83,8 +83,8 @@ export class ProyectosPage implements OnInit {
 
     if (searchTerm && searchTerm.trim() != ''){
       this.proyectos = this.proyectos.filter(currentClient => {
-        if (currentClient.codigoproyecto && searchTerm) {
-          return (currentClient.codigoproyecto.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+        if (currentClient.idproyecto && searchTerm) {
+          return (currentClient.idproyecto.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
         }
       });
     }else{
@@ -106,11 +106,11 @@ export class ProyectosPage implements OnInit {
     });
   }
 
-  async presentModal2(codigoproyecto:string, myData:Proyecto) {
+  async presentModal2(idproyecto:string, myData:Proyecto) {
     const modal = await this.modalCtrl.create({
       component: ProjectdetailsModalPage,
       componentProps:{
-        'codigoproyecto': codigoproyecto,
+        'idproyecto': idproyecto,
         'Proyecto': myData
       }
     });

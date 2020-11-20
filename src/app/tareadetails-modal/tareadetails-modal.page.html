@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="tertiary">
     <ion-title>
-      <ion-title>Detalles de la tarea {{this.idtareas}}</ion-title>
+      <ion-title>Detalles de la tarea {{this.myData.idtarea}}</ion-title>
     </ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="close()">
@@ -23,8 +23,8 @@
       <ion-input formControlName="fechafin"></ion-input>
     </ion-item>  
     <ion-item>
-      <ion-label>fechaverifica: </ion-label>
-      <ion-input formControlName="fechaverifica"></ion-input>
+      <ion-label>fecha: </ion-label>
+      <ion-input formControlName="fecha"></ion-input>
     </ion-item>  
     <ion-item>
       <ion-label>documento: </ion-label>

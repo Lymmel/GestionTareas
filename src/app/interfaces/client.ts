@@ -1,4 +1,5 @@
 export interface Client {
+    idcliente?: string;
     codigocliente?: string;
     razonsocial: string;
     email: string;
@@ -6,4 +7,5 @@ export interface Client {
     direccion: string;
     municipio: string;
     provincia: string;
+    activo?:string;
 }

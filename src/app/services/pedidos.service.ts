@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
+import { MethodCall } from '@angular/compiler';
 import { Injectable } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { Observable } from 'rxjs';
 import { Pedido } from '../interfaces/pedidos';
 
@@ -25,4 +27,4 @@ export class PedidosService {
    return this.http.post<any>('api/pedidos/7F9231ED2F71CF139B9442935', task);
   }
 
-}
+} 
