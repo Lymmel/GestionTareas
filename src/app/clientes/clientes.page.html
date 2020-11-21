@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Clientes</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
+      <ion-button (click)="refrescar()">
+        <ion-icon name="refresh" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="refrescar()">
+        <ion-icon name="refresh" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+  <ion-toolbar color="tertiary">
+    <ion-searchbar placeholder="Busqueda por Código" inputmode="numeric" (ionInput)="filterList($event)"></ion-searchbar>
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-list>
+
+    <ion-item-sliding *ngFor="let client of clients">
+      <ion-item>
+
+        <ion-label>
+          <h3>Código: {{ client.codigocliente}}</h3>
+          <p>
+            {{ client.razonsocial}}
+          </p>
+        </ion-label>
+
+        
+
+        <ion-buttons slot="end">
+          <ion-button slot="end" (click)="presentModal2(client.codigocliente, client)">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+
+        <!--
+        <ion-select>
+          <ion-select-option> <ion-text>{{ client.email}} </ion-text> </ion-select-option>
+          <ion-select-option>Teléfono: {{ client.telefono}} </ion-select-option>
+          <ion-select-option>Dirección: {{ client.direccion}} </ion-select-option>
+          <ion-select-option>Municipio: {{ client.municipio}} </ion-select-option>
+          <ion-select-option>Provincia: {{ client.provincia}} </ion-select-option>
+        </ion-select>
+        -->
+
+      </ion-item>
+
+      
+
+
+      <ion-item-options side="end" (ionSwipe)="borraCliente(client)">
+        <ion-item-option color="danger" expandable (click)="borraCliente(client)">
+          <ion-icon name="remove-circle" style="zoom:4.0;"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+
+      <ion-item-options side="start">
+        <ion-item-option color="primary">
+          <ion-icon name="create" style="zoom:4.0;"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="presentModal()" color="tertiary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

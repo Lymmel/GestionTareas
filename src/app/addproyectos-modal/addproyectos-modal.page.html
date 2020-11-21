@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      <ion-title>Añadir nuevo proyecto</ion-title>
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="proyForm" (ngSubmit)="addClient()">
+    <ion-item>
+      <ion-label>descripcion: </ion-label>
+      <ion-input type="text" formControlName="descripcion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>fechacreacion: </ion-label>
+      <ion-input formControlName="fechacreacion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>fechainicio: </ion-label>
+      <ion-input formControlName="fechainicio"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>observaciones: </ion-label>
+      <ion-input formControlName="observaciones"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>importe: </ion-label>
+      <ion-input formControlName="importe"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>numhoras: </ion-label>
+      <ion-input formControlName="numhoras"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>razonsocial: </ion-label>
+      <ion-input formControlName="razonsocial"></ion-input>
+    </ion-item>
+    <ion-button shape="round" color="tertiary" fill="solid" type="submit" [disabled]="!this.proyForm.valid">Agregar
+    </ion-button>
+  </form>
+</ion-content>

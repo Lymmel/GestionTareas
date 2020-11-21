@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      <ion-title>Añadir nuevo parte</ion-title>
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="partForm" (ngSubmit)="addParte()">
+    <ion-item>
+      <ion-label>descripcion: </ion-label>
+      <ion-input type="text" formControlName="descripcion"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>observaciones: </ion-label>
+      <ion-input formControlName="observaciones"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>idtrabajo: </ion-label>
+      <ion-input formControlName="idtrabajo"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>idtarea: </ion-label>
+      <ion-input formControlName="idtarea"></ion-input>
+    </ion-item>  
+    <ion-button shape="round" color="tertiary" fill="solid" type="submit" [disabled]="!this.partForm.valid">Agregar</ion-button>
+  </form>
+</ion-content>

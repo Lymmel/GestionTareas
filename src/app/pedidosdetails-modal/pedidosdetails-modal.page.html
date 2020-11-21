@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      <ion-title>Detalles del pedido {{this.numeropedido}}</ion-title>
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="pedForm2" (ngSubmit)="close()"> 
+    <ion-item>
+      <ion-label>ejerciciopedido: </ion-label>
+      <ion-input formControlName="ejerciciopedido"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>fechapedido: </ion-label>
+      <ion-input formControlName="fechapedido"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>seriepedido: </ion-label>
+      <ion-input formControlName="seriepedido"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>totalhoraspedido: </ion-label>
+      <ion-input formControlName="totalhoraspedido"></ion-input>
+    </ion-item>  
+    <ion-button shape="round" color="primary" fill="solid" type="submit" [disabled]="!this.pedForm2.valid">Cerrar</ion-button>
+  </form>
+</ion-content>
