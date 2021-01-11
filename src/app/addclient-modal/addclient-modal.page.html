@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      <ion-title>Añadir nuevo cliente</ion-title>
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="clientForm" (ngSubmit)="addClient()">
+    <ion-item>
+      <ion-label>Código cliente: </ion-label>
+      <ion-input type="text" formControlName="codigocliente"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Razón social: </ion-label>
+      <ion-input type="text" formControlName="razonsocial"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>Email: </ion-label>
+      <ion-input formControlName="email"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>Municipio: </ion-label>
+      <ion-input formControlName="municipio"></ion-input>
+    </ion-item> 
+    <ion-item>
+      <ion-label>Provincia: </ion-label>
+      <ion-input formControlName="provincia"></ion-input>
+    </ion-item> 
+    <ion-item>
+      <ion-label>Telefono: </ion-label>
+      <ion-input formControlName="telefono"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>Dirección: </ion-label>
+      <ion-input formControlName="direccion"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>Activo: </ion-label>
+      <ion-input type="text" formControlName="activo"></ion-input>
+    </ion-item>
+    <ion-button shape="round" color="tertiary" fill="solid" type="submit" [disabled]="!this.clientForm.valid">Agregar</ion-button>
+  </form>
+</ion-content>

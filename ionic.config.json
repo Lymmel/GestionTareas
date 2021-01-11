@@ -1,0 +1,13 @@
+{
+  "name": "gestionEmp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://apittask.tandemsm.com"
+    }
+  ]
+}

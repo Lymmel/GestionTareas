@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      <ion-title>Detalles del contrato {{this.myData.idcontrato}}</ion-title>
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="contractForm2" (ngSubmit)="close()"> 
+    <ion-item>
+      <ion-label>Nº Contrato: </ion-label>
+      <ion-input formControlName="numerocontrato" readonly="readonly"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>Código cliente: </ion-label>
+      <ion-input formControlName="codigocliente" readonly="readonly"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>Ejercicio: </ion-label>
+      <ion-input formControlName="ejerciciocontrato" readonly="readonly"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>Serie: </ion-label>
+      <ion-input formControlName="seriecontrato" readonly="readonly"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>Fecha: </ion-label>
+      <ion-input formControlName="fechacontrato" readonly="readonly"></ion-input>
+    </ion-item>   
+    <ion-button shape="round" color="primary" fill="solid" type="submit" [disabled]="!this.contractForm2.valid">Cerrar</ion-button>
+  </form>
+</ion-content>

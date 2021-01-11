@@ -1,0 +1,40 @@
+[
+    {
+        "icon": "people-outline",
+        "name": "Clientes",
+        "redirectTo": "/clientes"
+    },
+
+    {
+        "icon": "newspaper-outline",
+        "name": "Contratos",
+        "redirectTo": "/contratos"
+    },
+
+    {
+        "icon": "cart-outline",
+        "name": "Pedidos",
+        "redirectTo": "/pedidos"
+    },
+
+    {
+        "icon": "laptop-outline",
+        "name": "Proyectos",
+        "redirectTo": "/proyectos"
+    },
+     
+    {
+        "icon": "pencil-outline",
+        "name": "Tareas",
+        "redirectTo": "/tareas"
+    },
+
+    {
+        "icon": "open-outline",
+        "name": "Partes",
+        "redirectTo": "/tareas"
+    }
+
+]
+
+

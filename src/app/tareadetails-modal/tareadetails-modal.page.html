@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      <ion-title>Detalles de la tarea {{this.myData.idtarea}}</ion-title>
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <form [formGroup]="tareaForm2" (ngSubmit)="close()">
+    <ion-item>
+      <ion-label>Descripción: </ion-label>
+      <ion-input formControlName="descripcion" readonly="readonly"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fecha fin: </ion-label>
+      <ion-input formControlName="fechafin" readonly="readonly"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fecha: </ion-label>
+      <ion-input formControlName="fecha" readonly="readonly"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Documento: </ion-label>
+      <ion-input formControlName="documento" readonly="readonly"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>ID proyecto asignado: </ion-label>
+      <ion-input formControlName="idproyecto" readonly="readonly"></ion-input>
+    </ion-item>
+  </form>
+
+  <br>
+  <br>
+  <br>
+
+  <ion-list>
+    <ion-label>
+      <h1>Partes.</h1>
+    </ion-label>
+    <ion-label>
+      <h2>Esta tarea tiene agenciados los siguietes partes:</h2>
+    </ion-label>
+    <ion-searchbar placeholder="Búsqueda por ID" inputmode="numeric" (ionInput)="filterList($event)"></ion-searchbar>
+    <ion-item-sliding *ngFor="let parte of partes">
+      <ion-item>
+
+        <ion-label>
+          <h3>ID: {{ parte.idparte }}</h3>
+          <p>
+            Descripción: {{ parte.descripcion }}
+          </p>
+        </ion-label>
+
+
+
+        <ion-buttons slot="end">
+          <ion-button slot="end" (click)="presentModal2(parte.idparte, parte)">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+
+      </ion-item>
+
+      <ion-item-options side="end" (ionSwipe)="borraParte(parte)">
+        <ion-item-option color="danger" expandable (click)="borraParte(parte)">
+          <ion-icon name="remove-circle" style="zoom:4.0;"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+
+      <ion-item-options side="start" (ionSwipe)="presentModalEdit(parte.idparte, parte)">
+        <ion-item-option color="primary" expandable (click)="presentModalEdit(parte.idparte, parte)" >
+          <ion-icon name="create" style="zoom:4.0;"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+
+  </ion-list>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" id="fab">
+    <ion-fab-button color="light">
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="end">
+      <ion-fab-button (click)="presentModal3(this.myData.idtarea, this.myData)" color="tertiary">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list  side="start">
+      <ion-fab-button (click)="refrescar()" color="tertiary">
+        <ion-icon name="refresh"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+ 
+
+</ion-content>

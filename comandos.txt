@@ -1,0 +1,2 @@
+>Inicializar la app en navegador con el proxy de CORS
+ionic serve -- --proxy-config proxy.conf.json

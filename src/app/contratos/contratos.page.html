@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Contratos</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="refrescar()">
+        <ion-icon name="refresh" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+  <ion-toolbar color="tertiary">
+    <ion-searchbar placeholder="Búsqueda por ID" inputmode="numeric" (ionInput)="filterList($event)"></ion-searchbar>
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+
+    <ion-item-sliding *ngFor="let contrato of contratos">
+      <ion-item>
+
+        <ion-label>
+          <h3>ID: {{ contrato.idcontrato }}</h3>
+          <p>
+            Serie: {{ contrato.seriecontrato }}
+          </p>
+        </ion-label>
+
+        <ion-buttons slot="end">
+          <ion-button slot="end" (click)="presentModal2(contrato.numerocontrato, contrato)">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+      </ion-item>
+
+      <ion-item-options side="end" (ionSwipe)="borraContrato(contrato)">
+        <ion-item-option color="danger" expandable (click)="borraContrato(contrato)">
+          <ion-icon name="remove-circle" style="zoom:4.0;"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+
+      <ion-item-options side="start" (ionSwipe)="presentModalEdit(contrato.idcontrato, contrato)">
+        <ion-item-option color="primary" expandable (click)="presentModalEdit(contrato.idcontrato, contrato)">
+          <ion-icon name="create" style="zoom:4.0;"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+
+
+  </ion-list>
+
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" id="fab">
+    <ion-fab-button color="light">
+      <ion-icon md="caret-forward" ios="chevron-forward-circle-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="end">
+      <ion-fab-button (click)="presentModal()" color="tertiary">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  
+
+</ion-content>

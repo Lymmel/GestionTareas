@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      <ion-title>Añadir nuevo proyecto</ion-title>
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="proyForm" (ngSubmit)="addProject()">
+    <ion-item>
+      <ion-label>Código cliente: </ion-label>
+      <ion-input type="text" formControlName="codigocliente">
+        <ion-select okText='ok' formControlName="codigocliente">
+          <ion-select-option value="{{client.codigocliente}}" *ngFor="let client of clients">
+            {{client.codigocliente}} -
+            {{client.razonsocial}}
+          </ion-select-option>
+        </ion-select>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descripción: </ion-label>
+      <ion-input type="text" formControlName="descripcion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Observaciones: </ion-label>
+      <ion-input formControlName="observaciones"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Importe: </ion-label>
+      <ion-input formControlName="importe"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Horas estimadas: </ion-label>
+      <ion-input formControlName="horasestimadas"></ion-input>
+    </ion-item>
+    <ion-button shape="round" color="tertiary" fill="solid" type="submit" [disabled]="!this.proyForm.valid">Agregar
+    </ion-button>
+  </form>
+</ion-content>
