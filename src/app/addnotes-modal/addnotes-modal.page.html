@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Añadir nueva nota</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="noteForm" (ngSubmit)="addNote()">
+    <ion-item>
+      <ion-label>Código cliente: </ion-label>
+      <ion-input type="text" formControlName="codigocliente"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Título: </ion-label>
+      <ion-input type="text" formControlName="titulonota"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>Descripción: </ion-label>
+      <ion-input formControlName="descripcionnota"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label>Cód Empresa: </ion-label>
+      <ion-input formControlName="codigoempresa"></ion-input>
+    </ion-item> 
+    <ion-button shape="round" color="tertiary" fill="solid" type="submit" [disabled]="!this.noteForm.valid">Agregar</ion-button>
+  </form>
+</ion-content>

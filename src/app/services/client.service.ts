@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Client } from './../interfaces/client';
 import { Observable } from 'rxjs';
+import { Note } from '../interfaces/note';
 
 
 @Injectable({
@@ -54,11 +55,15 @@ export class ClientService {
 
   //Obtiene las notas de un cliente
   getNotasCliente(codigocliente: string): Observable<any> {
-    return this.http.get<any>('/api/notascliente/7F9231ED2F71CF139B9442935' + '/' + codigocliente + '/9');
+    return this.http.get<any>('/api/notascliente/7F9231ED2F71CF139B9442935' + '/' + codigocliente + '/1');
 
   }
 
 
+  //crear cliente
+  createNote(note: Note): Observable<any> {
+    return this.http.post<any>('api/nuevanotanew', note);
+  }
 
 
 

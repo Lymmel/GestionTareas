@@ -59,6 +59,8 @@ export class TareadetailsModalPage implements OnInit {
         console.log(partbackup);
         this.partbackup = partbackup;
       });
+      
+      
 
   }
 

@@ -5,6 +5,7 @@ import { formatDate } from '@angular/common';
 import { CalModalPage } from '../cal-modal/cal-modal.page';
 import { Componente } from '../interfaces/componente';
 import { CalendarComponent } from 'ionic2-calendar';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-tab2',
@@ -18,6 +19,11 @@ export class Tab2Page {
   eventSource = [];
   viewTitle: string;
 
+  storageKey = "keyon";
+
+
+
+
   //utilizamos la interfaz para los componentes dem menú
   componentes: Componente[] = [];
 
@@ -25,19 +31,25 @@ export class Tab2Page {
  
   constructor(private mCtr: MenuController, private alertCtrl: AlertController,
     @Inject(LOCALE_ID) private locale: string,
-    private modalCtrl: ModalController) { }
+    private modalCtrl: ModalController, private storageSvc: StorageService) { }
 
   goToMenu() {
     this.mCtr.toggle();
     this.mCtr.enable(true);
   }
 
-  
+  /*
+  nngOnInit() {
+    this.storageSvc.get(this.storageKey);
+  }
+  */
+
   calendar = {
     mode: 'month',
     currentDate: new Date(),
   };
 
+  
   selectedDate: Date;
 
 
@@ -104,6 +116,7 @@ export class Tab2Page {
         this.myCal.loadEvents();
       }
     });
+    
   }
 }
 

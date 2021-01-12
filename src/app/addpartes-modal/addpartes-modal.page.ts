@@ -45,6 +45,7 @@ export class AddpartesModalPage implements OnInit {
       this.trabajos = trabajos;
     });
 
+    
   }
 
 

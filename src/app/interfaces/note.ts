@@ -1,8 +1,8 @@
 export interface Note {
-    idnote?: string;
+    idnota?: string;
     codigocliente: string;
-    titulo: string;
-    descripcion: string;
+    titulonota: string;
+    descripcionnota: string;
     codigoempresa:string;
     
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CalendarstorageService } from '../services/calendarstorage.service';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-cal-modal',
@@ -8,11 +9,14 @@ import { CalendarstorageService } from '../services/calendarstorage.service';
   styleUrls: ['./cal-modal.page.scss'],
 })
 export class CalModalPage implements AfterViewInit {
+
   calendar = {
     mode: 'month',
     currentDate: new Date()
   };
+
   viewTitle: string;
+
 
   event = {
     title: '',
@@ -22,9 +26,11 @@ export class CalModalPage implements AfterViewInit {
     allDay: true
   };
 
+  storageKey = "keyon";
+
   modalReady = false;
 
-  constructor(private modalCtrl: ModalController, private calSSv: CalendarstorageService) {
+  constructor(private modalCtrl: ModalController, private calSSv: CalendarstorageService, private storageSv: StorageService) {
 
   }
 
@@ -34,21 +40,27 @@ export class CalModalPage implements AfterViewInit {
     }, 0);
   }
 
+
   save() {
     this.modalCtrl.dismiss({ event: this.event });
+    //this.storageSv.store(this.storageKey, this.event);
+    //this.calSSv.addEvent();
   }
+
 
   onViewTitleChanged(title) {
     this.viewTitle = title;
   }
 
+
   onTimeSelected(ev) {
     this.event.startTime = new Date(ev.selectedTime);
   }
+
 
   close() {
     this.modalCtrl.dismiss();
   }
 
-  
+
 }

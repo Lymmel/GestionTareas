@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ModalController, NavController, NavParams } from '@ionic/angular';
+import { AddnotesModalPage } from '../addnotes-modal/addnotes-modal.page';
 import { Client } from '../interfaces/client';
+import { Note } from '../interfaces/note';
 import { ClientService } from '../services/client.service';
 
 @Component({
@@ -16,9 +18,9 @@ export class ClientNotesModalPage implements OnInit {
   @Input() myData: Client;
 
 
-  notes: Client[] = [];
-  
-  constructor(private cliSvc: ClientService, private modalCtrl: ModalController, navParams: NavParams, private formBuilder: FormBuilder, private nav: NavController) { 
+  notes: Note[] = [];
+
+  constructor(private cliSvc: ClientService, private modalCtrl: ModalController, navParams: NavParams, private formBuilder: FormBuilder, private nav: NavController) {
     this.codigocliente = navParams.get('codigocliente');
     this.myData = navParams.get('Client');
   }
@@ -26,11 +28,27 @@ export class ClientNotesModalPage implements OnInit {
   ngOnInit() {
     this.cliSvc.getNotasCliente(this.codigocliente)
       .subscribe(notes => {
-        console.log(notes);
-        
+
         this.notes = notes;
+
+        console.log(this.notes);
       });
   }
+
+
+  /*
+  Método que abre el modal page de añadir una nueva nota.
+  */
+  async presentAddNotesModal(myData: Note) {
+    const modal = await this.modalCtrl.create({
+      component: AddnotesModalPage,
+      componentProps: {
+        'Note': myData
+      }
+    });
+    return await modal.present();
+  }
+
 
   //Cierra el modal
   close() {

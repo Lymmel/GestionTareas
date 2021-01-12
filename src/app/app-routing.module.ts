@@ -113,6 +113,10 @@ const routes: Routes = [
   {
     path: 'client-notes-modal',
     loadChildren: () => import('./client-notes-modal/client-notes-modal.module').then( m => m.ClientNotesModalPageModule)
+  },
+  {
+    path: 'addnotes-modal',
+    loadChildren: () => import('./addnotes-modal/addnotes-modal.module').then( m => m.AddnotesModalPageModule)
   }
 ];
 @NgModule({

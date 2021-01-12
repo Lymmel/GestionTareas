@@ -18,19 +18,22 @@ export class PedidosService {
   //Obtenemos todos los pedido desde la API
   getAll(): Observable<any> {
     //return this.http.get<any>('https://apittask.tandemsoftware.es/api/pedidos/7F9231ED2F71CF139B9442935);
-     return this.http.get<any>('/api/pedidos/7F9231ED2F71CF139B9442935/1');
+    return this.http.get<any>('/api/pedidos/7F9231ED2F71CF139B9442935/9');
 
   }
+
 
   //crear pedido
   createPedido(pedido: Pedido): Observable<any> {
-   return this.http.post<any>('/api/createpedido', pedido);
+    return this.http.post<any>('/api/createpedido', pedido);
   }
+
 
   //borrar pedido
   deletePedido(pedido: Pedido): Observable<any> {
     return this.http.post<any>('/api/deletepedido', pedido);
   }
+
 
   //actualiza tarea
   updatePed(pedido: Pedido): Observable<any> {

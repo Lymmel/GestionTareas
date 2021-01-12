@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="tertiary">
     <ion-title>Notas del cliente</ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="close()">
@@ -15,19 +15,13 @@
     <ion-item-sliding *ngFor="let note of notes">
 
       <ion-item>
-        <ion-label>ID: {{ note.idnote }}</ion-label>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Código cliente: {{ note.codigocliente }}</ion-label>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Título: {{ note.titulo }}</ion-label>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Descripción: {{ note.descripcion }}</ion-label>
+        <ion-label>
+          <p>ID: {{ note.idnota }}</p>
+          <p>Código cliente: {{ note.codigocliente }}</p>
+          <p>Título: {{ note.titulonota }}</p>
+          <p>Descripción: {{ note.descripcionnota }}</p>
+          <p>Cód Empresa: {{ note.codigoempresa }}</p>
+        </ion-label>
       </ion-item>
 
     </ion-item-sliding>
@@ -40,8 +34,7 @@
       <ion-icon md="caret-forward" ios="chevron-forward-circle-outline"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="end">
-      <!--Click()-->
-      <ion-fab-button  color="tertiary">
+      <ion-fab-button (click)="presentAddNotesModal()" color="tertiary">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
